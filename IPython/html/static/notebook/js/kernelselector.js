@@ -140,6 +140,11 @@ define([
             return;
         }
         console.log('spec', kernel_name, ks);
+        if (typeof ks === 'undefined') {
+            throw new Error("The '" + kernel_name + "' kernel specified in " +
+                    "this notebook is not available. Please pick another suitable " +
+                    "kernel instead, or install that kernel.");
+        };
         this.events.trigger('spec_changed.Kernel', ks);
     };
 
